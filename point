@@ -1,0 +1,33 @@
+   /**
+     *  Reads the ACL rule set from the database.
+     *    @param db pointer to the db
+     *    @return 0 on success
+     */
+    int select();
+
+    /**
+     *  Inserts the ACL rule in the database.
+     *    @param rule to insert
+     *    @return 0 on success
+     */
+    int insert(AclRule * rule)
+    {
+        return insert(rule, db);
+    };
+
+    /**
+     *  Inserts the ACL rule in the database.
+     *    @param rule to insert
+     *    @db db pointer
+     *
+     *    @return 0 on success
+     */
+    static int insert(AclRule * rule, SqlDB * db);
+
+    /**
+     *  Drops an ACL rule from the database
+     *
+     *    @param oid Rule id
+     *    @return 0 on success
+     */
+    int drop(int oid);
