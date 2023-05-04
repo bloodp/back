@@ -1,0 +1,27 @@
+ pull_request:
+    paths:
+      - '.github/workflows/update-dependencies.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 18 * * 0'  # "At 18:00 on Sunday."
+
+jobs:
+  update-dependencies:
+    name: Update dependencies
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v3
+    - uses: wntrblm/nox@2022.11.21
+      with:
+        python-versions: "3.6, 3.7, 3.8, 3.9, 3.10, 3.11"
+    - name: "Allow nox to run with python 3.6"
+      run: pipx runpip nox install 'virtualenv<20.22.0'
+    - name: "Setup bot user"
+      run: |
+        git config --global user.name "manylinux-bot[bot]"
+        git config --global user.email "89297709+manylinux-bot[bot]@users.noreply.github.com"
+    # we use this step to grab a Github App auth token, so that lastversion can query GitHub API
+    # without rate-limit and PRs get run by GHA.
+    - uses: tibdex/github-app-token@v1
+      id: generate-token
+      if: github.ref == 'refs/heads/main' && github.repository == 'pypa/manylinux'
