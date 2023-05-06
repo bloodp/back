@@ -1,0 +1,29 @@
+  The Play Team is proud to announce the release of Play $NEXT_MINOR_VERSION. This release adds many new features and continues our efforts to make Play more modular, flexible, and secure. Play $NEXT_MINOR_VERSION is the result of more than **X months** of relentless work from our fantastic community, comprehending **more than a thousand (TODO?) changes** made from **X contributors**.
+  
+  ## :green_book: What is new?
+  
+  The highlights in Play $NEXT_MINOR_VERSION include, but are not limited by:
+  
+  ### Scala 3 (? TODO)
+  
+  Play $NEXT_MINOR_VERSION not only supports Scala 3 but uses it as the default version. Play, all the samples, and seeds all use Scala 3 by default now.
+  
+  ### Java 17 (? TODO)
+  
+  Play $NEXT_MINOR_VERSION is the first version were we officially support Java 17. Play, its standalone modules, samples and seeds are all tested against AdoptOpenJDK 17 and 11, which is the default version.
+  
+  ## :gift: Updated Dependencies
+  
+  Besides updates to newer versions of our own libraries (play-json, play-ws, twirl, cachecontrol, etc), many other important dependencies were updated to the newest versions:
+  
+  * Guice x.x.x
+  * specs2 x.x.x
+  * Jackson x.x.x
+  * Mockito x.x.x
+  * HikariCP x.x.x
+  * Hibernate Validator x.x.x.Final
+  * Lightbend Config x.x.x
+  * Caffeine x.x.x
+  * sbt-native-packager x.x.x
+  * TODO...
+  
