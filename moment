@@ -1,0 +1,22 @@
+- name: Create Deployment
+      uses: bobheadxi/deployments@v1
+      id: deployment
+      with:
+        step: start
+        env: aws
+
+    - uses: actions/checkout@v3
+
+    - name: add packages data
+      run: |
+        rm ./src/data/packages.json
+        curl https://api.tea.xyz/v1/packages -H "Accept: application/json" >> ./src/data/packages.json
+
+    - name: Create Package Detail Pages from packages.json
+      uses: getneil/jq-action@v1
+      id: version
+      with:
+        cmd: '.github/build-package-pages.sh src/data/packages.json src/content'
+
+    - uses: teaxyz/setup@v0
+    - run: tea -E just ci
